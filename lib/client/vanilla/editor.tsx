@@ -345,6 +345,42 @@ function Editor({ standaloneServer = false }) {
   const getComponents = (): HTMLDivElement[] => {
     return Array.from(canvasRef.current?.children ?? []).filter((c) => c.tagName !== 'SCRIPT') as HTMLDivElement[]
   }
+  const [htmlContent, setHtmlContent] = useState('')
+  const [isPrevieww, setIsPrevieww] = useState(false)
+
+  useEffect(() => {
+    const fetchHtml = async () => {
+      const response = await fetch('/api/readHtml')
+      const data = await response.json()
+      setHtmlContent(data.html)
+    }
+
+    fetchHtml()
+  }, [onDomChange])
+
+  const handleSaveChanges = () => {
+    const parser = new DOMParser()
+    const doc = parser.parseFromString(htmlContent, 'text/html')
+    const imgTags = doc.querySelectorAll('img')
+    const sectionNames = ['section-one', 'section-two', 'section-three']
+
+    const srcArray = []
+
+    imgTags.forEach((img, index) => {
+      const url = new URL(img.src)
+      const pathSegments = url.pathname.split('/')
+      const filename = pathSegments[pathSegments.length - 1]
+      const nameWithoutExtension = filename.split('.')[0]
+      const cleanName = nameWithoutExtension.split('_')[0] // Get only the part before the first underscore
+
+      const sectionObject = {}
+      sectionObject[sectionNames[index]] = cleanName
+      srcArray.push(sectionObject)
+    })
+
+    console.log(srcArray)
+    setIsPreview((s) => !s)
+  }
 
   return (
     <div className="flex flex-row bg-white w-full">
@@ -404,8 +440,8 @@ function Editor({ standaloneServer = false }) {
             <div style={{ marginLeft: isPreview ? 'auto' : '', display: 'flex', gap: 0.5 }}>
               <button
                 className="bg-green-500 hover:bg-green-700 text-white px-4 py-2 ml-6 mr-6 rounded-md flex items-center"
-                style={{ marginLeft: isPreview ? 'auto' : '' }}
-                onClick={() => setIsPreview((s) => !s)}
+                // style={{ marginLeft: isPreview ? 'auto' : '' }}
+                onClick={handleSaveChanges}
               >
                 <PencilIcon className="h-4 w-4 mr-2" />
                 Save Changes

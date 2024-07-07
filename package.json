@@ -66,6 +66,9 @@
     ]
   },
   "dependencies": {
-    "@heroicons/react": "^2.1.4"
+    "@heroicons/react": "^2.1.4",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "ws": "^8.18.0"
   }
 }
