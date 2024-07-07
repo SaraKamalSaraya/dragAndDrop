@@ -189,12 +189,7 @@ const EditorElement: React.FC<ContainerProps> = ({ render, standaloneServer }) =
               />
               <HashtagDialog open={openHash} setOpen={setOpenHash} node={node} actions={actions} />
               <SvgDialog open={openSvg} setOpen={setOpenSvg} node={node} actions={actions} />
-              <ButtonDialog
-                open={openButton}
-                setOpen={setOpenButton}
-                node={node}
-                actions={actions}
-              />
+              <ButtonDialog open={openButton} setOpen={setOpenButton} node={node} actions={actions} />
             </div>,
             document.querySelector('.page-container') as HTMLElement,
           )

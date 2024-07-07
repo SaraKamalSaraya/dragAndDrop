@@ -42,9 +42,7 @@ export const Header = () => {
             <SimpleTooltip text="Undo" side="bottom" offset={4}>
               <a
                 className={` ${
-                  query.history.canUndo()
-                    ? 'hover:opacity-50 cursor-pointer'
-                    : 'opacity-50 cursor-not-allowed'
+                  query.history.canUndo() ? 'hover:opacity-50 cursor-pointer' : 'opacity-50 cursor-not-allowed'
                 } p-2`}
                 onClick={actions.history.undo}
               >
@@ -54,9 +52,7 @@ export const Header = () => {
             <SimpleTooltip text="Redo" side="bottom" offset={4}>
               <a
                 className={` ${
-                  query.history.canRedo()
-                    ? 'hover:opacity-50 cursor-pointer'
-                    : 'opacity-50 cursor-not-allowed'
+                  query.history.canRedo() ? 'hover:opacity-50 cursor-pointer' : 'opacity-50 cursor-not-allowed'
                 } p-2`}
                 onClick={actions.history.redo}
               >
