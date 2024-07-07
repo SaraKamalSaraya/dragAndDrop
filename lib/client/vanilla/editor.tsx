@@ -347,7 +347,7 @@ function Editor({ standaloneServer = false }) {
   }
 
   return (
-    <div className="flex flex-row bg-white">
+    <div className="flex flex-row bg-white w-full">
       {!isPreview && (
         <div className="w-56 p-2 shrink-0 overflow-y-scroll h-screen">
           {Object.keys(components).map((c: string, i) => (

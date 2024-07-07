@@ -1,5 +1,5 @@
 const Component = {
-  displayName: 'Banner 3',
+  displayName: 'Banner 4',
   category: 'Banners',
 }
 export default Component
