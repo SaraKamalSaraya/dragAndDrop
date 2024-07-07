@@ -64,5 +64,8 @@
     "*.{js,ts,tsx,jsx}": [
       "npm run pretty"
     ]
+  },
+  "dependencies": {
+    "@heroicons/react": "^2.1.4"
   }
 }

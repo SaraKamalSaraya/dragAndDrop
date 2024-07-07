@@ -369,7 +369,7 @@ function Editor({ standaloneServer = false }) {
             </div>
           )} */}
 
-          {!isPreview && (
+          {/* {!isPreview && (
             <div className="mr-auto ml-auto">
               <div
                 className="flex rounded py-2 px-4 transition cursor-pointer items-center justify-center mr-auto ml-auto"
@@ -389,25 +389,36 @@ function Editor({ standaloneServer = false }) {
                 }}
               />
             </div>
-          )}
+          )} */}
 
           {!isPreview ? (
             <button
               className="bg-green-500 hover:bg-green-700 text-white px-4 py-2 ml-6 mr-6 rounded-md flex items-center"
+              style={{ marginLeft: !isPreview ? 'auto' : '' }}
               onClick={() => setIsPreview((s) => !s)}
             >
               <ComputerDesktopIcon className="h-4 w-4 mr-2" />
               Preview
             </button>
           ) : (
-            <button
-              className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 ml-6 mr-6 rounded-md flex items-center"
-              style={{ marginLeft: isPreview ? 'auto' : '' }}
-              onClick={() => setIsPreview((s) => !s)}
-            >
-              <PencilIcon className="h-4 w-4 mr-2" />
-              Editor
-            </button>
+            <div style={{ marginLeft: isPreview ? 'auto' : '', display: 'flex', gap: 0.5 }}>
+              <button
+                className="bg-green-500 hover:bg-green-700 text-white px-4 py-2 ml-6 mr-6 rounded-md flex items-center"
+                style={{ marginLeft: isPreview ? 'auto' : '' }}
+                onClick={() => setIsPreview((s) => !s)}
+              >
+                <PencilIcon className="h-4 w-4 mr-2" />
+                Save Changes
+              </button>
+              <button
+                className="bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 ml-6 mr-6 rounded-md flex items-center"
+                style={{ marginLeft: isPreview ? 'auto' : '' }}
+                onClick={() => setIsPreview((s) => !s)}
+              >
+                <PencilIcon className="h-4 w-4 mr-2" />
+                Editor
+              </button>
+            </div>
           )}
         </div>
         <div className="flex justify-center h-fit bg-gray-200 overflow-y-scroll" style={{ position: 'relative' }}>
